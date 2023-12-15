@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="todo"
+            type="com.example.todoapp.entities.TodoModel" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="5dp"
+        app:contentPadding="6dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rowTodoPriorityIcon"
+                android:src="@drawable/baseline_red_star_24"
+                android:scaleType="centerCrop"
+                android:layout_centerInParent="true"
+                android:layout_alignParentStart="true"
+
+                app:setPriorityIcon="@{todo.priority}"
+
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rowTodoName"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:layout_marginStart="5dp"
+                android:text="@{todo.name}"
+                android:layout_toEndOf="@+id/rowTodoPriorityIcon" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rowDateTv"
+                app:setFormattedDate="@{todo.date}"
+                tools:text="12/11/2023"
+                android:layout_alignStart="@+id/rowTodoName"
+                android:layout_below="@+id/rowTodoName"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rowTimeTv"
+                android:textAllCaps="true"
+                app:setFormattedTime="@{todo.time}"
+                android:layout_marginStart="10dp"
+                tools:text="12:10 am"
+                android:layout_toEndOf="@+id/rowDateTv"
+                android:layout_below="@+id/rowTodoName"
+
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rowMenuIcon"
+                android:text="@string/menu_icon"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+
+                />
+
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/rowTodoCompleteBox"
+                android:layout_toStartOf="@+id/rowMenuIcon"
+                android:checked="@{todo.completed}"
+
+                />
+
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
